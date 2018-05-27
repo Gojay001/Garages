@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.gojay.nmid.dao.CarDao">
+
+    <!--查询carport表中所有车位状态信息-->
+    <select id="listCarStatus" resultType="Car">
+        SELECT port_id, car_status, car_height
+        FROM carport
+        ORDER BY port_id ASC
+    </select>
+
+    <!--查询carport表中所有车位状态信息-->
+    <select id="getCarStatus" parameterType="Integer" resultType="Car">
+        SELECT port_id, car_status, car_height
+        FROM carport WHERE port_id = #{portId}
+    </select>
+
+    <!--更新carport表中车位高度-->
+    <update id="setCarHeight">
+        UPDATE carport
+        SET car_height = #{height} WHERE port_id = #{portId}
+    </update>
+</mapper>

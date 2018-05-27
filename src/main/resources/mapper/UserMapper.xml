@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.gojay.nmid.dao.UserDao">
+
+    <!--查询user表中username和password匹配记录-->
+    <select id="signIn" resultType="User">
+        SELECT *
+        FROM user WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <!--统计records表中指定日期的记录数-->
+    <select id="countTraffic" resultType="Integer">
+        SELECT COUNT(record_id)
+        FROM records WHERE record_date = #{date}
+    </select>
+</mapper>

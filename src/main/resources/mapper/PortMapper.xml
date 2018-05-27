@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.gojay.nmid.dao.PortDao">
+
+    <!--将message写入数据库test表中-->
+    <insert id="insertMessage" parameterType="String">
+        INSERT INTO test
+        VALUES (#{message})
+    </insert>
+
+    <!--更新carport表中车位状态-->
+    <update id="setCarStatus">
+            UPDATE carport
+            SET car_status = #{status} WHERE port_id = #{portId}
+    </update>
+
+    <!--将车位状态变化写入records表中-->
+    <insert id="insertRecord">
+        INSERT INTO records(port_id, record_date)
+        VALUES (#{portId}, #{date})
+    </insert>
+</mapper>
